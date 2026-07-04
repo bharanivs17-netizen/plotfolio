@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="V. S. Bharani — Premium portfolio website displaying interactive spatial platforms, Docker-based code sandboxes, and high-performance SaaS dashboards." />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://bharanivs17-netizen.github.io/plotfolio/" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌌</text></svg>" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bharanivs17-netizen.github.io/plotfolio/" />
+  <meta property="og:title" content="V. S. Bharani — The Journey of Becoming" />
+  <meta property="og:description" content="Premium portfolio website displaying interactive spatial platforms, Docker-based code sandboxes, and high-performance SaaS dashboards." />
+  <meta property="og:image" content="https://bharanivs17-netizen.github.io/plotfolio/vsnexar_mockup.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://bharanivs17-netizen.github.io/plotfolio/" />
+  <meta property="twitter:title" content="V. S. Bharani — The Journey of Becoming" />
+  <meta property="twitter:description" content="Premium portfolio website displaying interactive spatial platforms, Docker-based code sandboxes, and high-performance SaaS dashboards." />
+  <meta property="twitter:image" content="https://bharanivs17-netizen.github.io/plotfolio/vsnexar_mockup.png" />
+
+  <title>V. S. Bharani — The Journey of Becoming</title>
+
+  <!-- Google Fonts: Space Grotesk, Inter, Playfair Display, Neue Montreal (approx via alternative if unavailable, using Inter for numbers here, or we'll assume local font) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- External Libraries -->
+  <!-- GSAP Core & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- GSAP Flip -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+  <!-- GSAP TextPlugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+  <!-- GSAP MotionPathPlugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+  
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <!-- SplitType for Text Animations -->
+  <script src="https://unpkg.com/split-type"></script>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="intro.css" />
+  <link rel="stylesheet" href="connect.css" />
+  <link rel="stylesheet" href="codealpha.css" />
+</head>
+<body>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- APPLE-STYLE BLACK PRELOADER -->
+  <div id="black-preloader">
+    <div class="preloader-content">
+      <div class="preloader-logo-apple">Bharani V.S</div>
+      <div class="preloader-bar-container">
+        <div class="preloader-bar-fill" id="preloader-bar-fill"></div>
+      </div>
+      <div class="preloader-percentage" id="preloader-percentage">0%</div>
+    </div>
+  </div>
+
+  <!-- FLOATING NAVIGATION -->
+  <nav id="navbar" class="glass-nav nav-hidden">
+    <div class="nav-brand">V. S. Bharani</div>
+    <ul class="nav-links">
+      <li><a href="#hero" class="magnetic" data-section="hero">Home</a></li>
+      <li><a href="#journey" class="magnetic" data-section="journey">Journey</a></li>
+      <li><a href="#projects" class="magnetic" data-section="projects">Work</a></li>
+      <li><a href="#contact" class="magnetic" data-section="contact">Contact</a></li>
+    </ul>
+    <!-- Mobile Hamburger Menu Button -->
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle Navigation Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE FULLSCREEN OVERLAY MENU -->
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+    <ul class="mobile-nav-links">
+      <li><a href="#hero" data-section="hero">Home</a></li>
+      <li><a href="#journey" data-section="journey">Journey</a></li>
+      <li><a href="#projects" data-section="projects">Work</a></li>
+      <li><a href="#contact" data-section="contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- SCROLL INDICATOR -->
+  <div class="scroll-indicator-container">
+    <div class="scroll-indicator-line"></div>
+  </div>
+
+  <!-- MAIN WRAPPER FOR LENIS -->
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+
+      <!-- CINEMATIC INTRO -->
+      <section id="intro-canvas-section">
+        <canvas id="intro-canvas"></canvas>
+      </section>
+
+      <!-- HERO SECTION -->
+      <section id="hero" class="section hero-section hero-hidden">
+        <!-- Background Effects -->
+        <div class="hero-bg">
+          <div class="aurora"></div>
+          <div class="noise-overlay"></div>
+          <div class="floating-particles" id="particles-container"></div>
+        </div>
+        
+        <div class="hero-content">
+          <div class="hero-left">
+            <h1 class="hero-title" id="hero-greeting">
+              <div class="title-line">Hello,</div>
+              <div class="title-line">I'm</div>
+              <div class="title-line highlight">V. S. Bharani</div>
+            </h1>
+            <div class="role-switcher-container">
+              <span id="role-switcher">Software Developer</span>
+            </div>
+            <div class="hero-ctas">
+              <a href="#journey" class="btn primary magnetic">Explore Journey</a>
+              <a href="#contact" class="btn secondary magnetic">Let's Build Together</a>
+            </div>
+          </div>
+          
+          <div class="hero-right">
+            <div class="portrait-container magnetic-wrap">
+              <div class="portrait-glass-border"></div>
+              <img src="hero image.jpeg" alt="V. S. Bharani" class="portrait-img" id="hero-img" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- JOURNEY SECTION (Childhood to Engineering) -->
+      <section id="journey" class="section">
+        <div class="container">
+          <h2 class="section-title split-text">The Journey of Becoming</h2>
+          <p class="section-subtitle split-text">"Every expert was once a beginner."</p>
+
+          <div class="timeline-container">
+            <!-- The animated line connecting points -->
+            <div class="timeline-line">
+              <div class="timeline-line-progress" id="timeline-path"></div>
+            </div>
+
+            <!-- Milestones -->
+            <div class="milestone left" data-milestone="1">
+              <div class="milestone-content glass-card tilt-card">
+                <div class="milestone-icon">🎨</div>
+                <h3>Childhood Curiosity</h3>
+                <p>Notebooks, sketches, and an endless fascination with how things work.</p>
+              </div>
+            </div>
+            
+            <div class="milestone right" data-milestone="2">
+              <div class="milestone-content glass-card tilt-card">
+                <div class="milestone-icon">⚙️</div>
+                <h3>Engineering</h3>
+                <p>Diving into code. Turning logical puzzles into scalable software.</p>
+              </div>
+            </div>
+
+            <div class="milestone left" data-milestone="3">
+              <div class="milestone-content glass-card tilt-card">
+                <div class="milestone-icon">🏆</div>
+                <h3>Hackathons & Building</h3>
+                <p>Late nights, endless coffee, and pushing boundaries in 24 hours.</p>
+              </div>
+            </div>
+            
+            <div class="milestone right" data-milestone="4">
+              <div class="milestone-content glass-card tilt-card">
+                <div class="milestone-icon">💼</div>
+                <h3>Freelancing & Agency</h3>
+                <p>Delivering real-world solutions and understanding client needs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS SECTION -->
+      <section id="skills" class="section">
+        <div class="container">
+          <h2 class="section-title split-text text-center">Tools & Technologies</h2>
+          
+          <div class="skills-grid" id="skills-grid">
+            <!-- Skill spheres generated by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURED PROJECTS -->
+      <section id="projects" class="section">
+        <div class="container">
+          <h2 class="section-title split-text">Explore Projects</h2>
+          <p class="section-subtitle split-text">A showcase of production-ready digital applications and startup concepts.</p>
+          
+          <div class="projects-wrapper">
+            <!-- Project 1 -->
+            <div class="project-card" data-project="1">
+              <div class="project-image-wrapper">
+                <div class="project-image" style="background-image: url('vsnexar_mockup.png');" data-flip-id="img-1" role="img" aria-label="VSNEXAR — Immersive Spatial 3D Platform interface dashboard screenshot showing interactive scene graphs."></div>
+              </div>
+              <div class="project-info">
+                <h3>VSNEXAR — Immersive Spatial Platform</h3>
+                <p>An interactive, spatial 3D visualization platform connecting WebGL visuals directly with enterprise operational metrics.</p>
+                <div class="project-tags">
+                  <span>React</span><span>Three.js</span><span>GSAP</span><span>WebGL</span>
+                </div>
+                <div class="project-links">
+                  <a href="https://github.com/bharanivs17-netizen" target="_blank" class="btn-project secondary magnetic">GitHub ↗</a>
+                  <a href="https://bharanivs17-netizen.github.io/codealpha_task/" target="_blank" rel="noopener noreferrer" class="btn-project primary magnetic">Live Demo ↗</a>
+                  <button class="btn-project text-link magnetic">Case Study &rarr;</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card" data-project="2">
+              <div class="project-image-wrapper">
+                <div class="project-image" style="background-image: url('ai_workspace_mockup.png');" data-flip-id="img-2" role="img" aria-label="AI-Agent Coding Workspace interface showing containerized terminal terminals executing Python code."></div>
+              </div>
+              <div class="project-info">
+                <h3>AI-Agent Coding Workspace</h3>
+                <p>An autonomous development sandbox written in Python using Gemini APIs to execute file operations in Docker containers.</p>
+                <div class="project-tags">
+                  <span>Python</span><span>Gemini API</span><span>Docker</span><span>Node.js</span>
+                </div>
+                <div class="project-links">
+                  <a href="https://github.com/bharanivs17-netizen" target="_blank" class="btn-project secondary magnetic">GitHub ↗</a>
+                  <a href="https://bharanivs17-netizen.github.io/codealpha_task/" target="_blank" rel="noopener noreferrer" class="btn-project primary magnetic">Live Demo ↗</a>
+                  <button class="btn-project text-link magnetic">Case Study &rarr;</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card" data-project="3">
+              <div class="project-image-wrapper">
+                <div class="project-image" style="background-image: url('saas_analytics_mockup.png');" data-flip-id="img-3" role="img" aria-label="Hyperflow SaaS Analytics Dashboard showing high-performance real-time WebSocket chart HUDs."></div>
+              </div>
+              <div class="project-info">
+                <h3>Hyperflow SaaS Analytics</h3>
+                <p>A cloud-native SaaS infrastructure built using React, MongoDB, and WebSockets to visualize real-time charts at 60fps.</p>
+                <div class="project-tags">
+                  <span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span>
+                </div>
+                <div class="project-links">
+                  <a href="https://github.com/bharanivs17-netizen" target="_blank" class="btn-project secondary magnetic">GitHub ↗</a>
+                  <a href="https://bharanivs17-netizen.github.io/codealpha_task/" target="_blank" rel="noopener noreferrer" class="btn-project primary magnetic">Live Demo ↗</a>
+                  <button class="btn-project text-link magnetic">Case Study &rarr;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CODEALPHA FULL STACK INTERNSHIP CASE STUDY -->
+      <section id="codealpha" class="section codealpha-section">
+        <!-- Ambient Background Effects -->
+        <div class="codealpha-bg">
+          <div class="codealpha-aurora"></div>
+          <div class="codealpha-particles" id="codealpha-particles-container"></div>
+          <div class="codealpha-rays"></div>
+          <div class="codealpha-code-snippets" id="codealpha-code-snippets"></div>
+        </div>
+
+        <div class="container">
+          <!-- Hero Grid -->
+          <div class="codealpha-hero-grid">
+            <div class="codealpha-hero-left">
+              <div class="codealpha-badge">
+                <span class="badge-icon">✔</span>
+                <span class="badge-text">Internship Project</span>
+              </div>
+              <h2 class="codealpha-title split-text">CodeAlpha Internship</h2>
+              <h1 class="codealpha-heading split-text">Building Modern Full Stack Web Applications with Real-World Development Experience</h1>
+              <p class="codealpha-description split-text">Successfully completed multiple Full Stack Web Development internship tasks by designing responsive user interfaces, implementing interactive frontend functionality, integrating backend logic, and deploying complete web applications.</p>
+              
+              <div class="codealpha-tags-wrapper">
+                <span class="codealpha-tag-pill">HTML5</span>
+                <span class="codealpha-tag-pill">CSS3</span>
+                <span class="codealpha-tag-pill">JavaScript</span>
+                <span class="codealpha-tag-pill">Responsive Design</span>
+                <span class="codealpha-tag-pill">Git</span>
+                <span class="codealpha-tag-pill">GitHub</span>
+                <span class="codealpha-tag-pill">REST APIs</span>
+                <span class="codealpha-tag-pill">Frontend Development</span>
+                <span class="codealpha-tag-pill">Backend Integration</span>
+                <span class="codealpha-tag-pill">UI/UX Design</span>
+                <span class="codealpha-tag-pill">Deployment</span>
+              </div>
+            </div>
+
+            <div class="codealpha-hero-right">
+              <!-- Floating 3D Browser Mockup -->
+              <div class="codealpha-browser-mockup glass-card tilt-card" id="codealpha-hero-browser">
+                <div class="browser-header">
+                  <div class="browser-dots">
+                    <span class="dot-red"></span>
+                    <span class="dot-yellow"></span>
+                    <span class="dot-green"></span>
+                  </div>
+                  <div class="browser-address">codealpha-dev-workspace</div>
+                </div>
+                <div class="browser-body">
+                  <div class="browser-image" style="background-image: url('codealpha_mockup.png');"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Internship Highlights -->
+          <div class="codealpha-highlights-container">
+            <h3 class="subsection-title split-text text-center">Internship Highlights</h3>
+            <div class="codealpha-highlights-grid">
+              <div class="highlight-item glass-card tilt-card">
+                <div class="highlight-icon">💼</div>
+                <h4>Full Stack Internship</h4>
+                <p>Designed scalable frontends and integrated active API endpoints.</p>
+              </div>
+              <div class="highlight-item glass-card tilt-card">
+                <div class="highlight-icon">📱</div>
+                <h4>Responsive Web Apps</h4>
+                <p>Ensured completely adaptive layouts on mobile, tablets, and desktops.</p>
+              </div>
+              <div class="highlight-item glass-card tilt-card">
+                <div class="highlight-icon">🎨</div>
+                <h4>Modern UI/UX</h4>
+                <p>Crafted sleek interfaces focusing on visual hierarchy and typography.</p>
+              </div>
+              <div class="highlight-item glass-card tilt-card">
+                <div class="highlight-icon">⚡</div>
+                <h4>Interactive JavaScript</h4>
+                <p>Implemented client-side logic and smooth custom layout flows.</p>
+              </div>
+              <div class="highlight-item glass-card tilt-card">
+                <div class="highlight-icon">🤳</div>
+                <h4>Mobile Friendly</h4>
+                <p>Configured touch gestures and fully fluid layouts for standard viewports.</p>
+              </div>
+              <div class="highlight-item glass-card tilt-card">
+                <div class="highlight-icon">🔌</div>
+                <h4>API Integration</h4>
+                <p>Parsed JSON payloads and dynamically populated user interfaces.</p>
+              </div>
+              <div class="highlight-item glass-card tilt-card">
+                <div class="highlight-icon">🛠</div>
+                <h4>Git Version Control</h4>
+                <p>Managed project states and modular branches during builds.</p>
+              </div>
+              <div class="highlight-item glass-card tilt-card">
+                <div class="highlight-icon">🚀</div>
+                <h4>Deployment Experience</h4>
+                <p>Hosted operational applications live on web environments.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technologies Section -->
+          <div class="codealpha-tech-container">
+            <h3 class="subsection-title split-text text-center">Technologies Utilized</h3>
+            <div class="codealpha-tech-grid">
+              <div class="tech-icon-card glass-card tilt-card" data-tech-name="HTML5">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h20l-2 17-8 3-8-3L2 2z" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 8.5H8.5V11H15a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H8.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>HTML5</span>
+              </div>
+              <div class="tech-icon-card glass-card tilt-card" data-tech-name="CSS3">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2H2l2 17 8 3 8-3 2-17z" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7.5H8.5v3H14a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H8v-2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>CSS3</span>
+              </div>
+              <div class="tech-icon-card glass-card tilt-card" data-tech-name="JavaScript">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h18v18H3V3z"/><path d="M12 17v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 9v4a1 1 0 0 0 1 1h1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>JavaScript</span>
+              </div>
+              <div class="tech-icon-card glass-card tilt-card" data-tech-name="Git">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><path d="M12 3v7M12 14v7"/></svg>
+                <span>Git</span>
+              </div>
+              <div class="tech-icon-card glass-card tilt-card" data-tech-name="GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                <span>GitHub</span>
+              </div>
+              <div class="tech-icon-card glass-card tilt-card" data-tech-name="REST API">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2" ry="2"/><path d="M12 5v14M2 12h20"/></svg>
+                <span>REST API</span>
+              </div>
+              <div class="tech-icon-card glass-card tilt-card" data-tech-name="VS Code">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 22l-12-8L3 16V8l3 2 12-8 3 3-15 7 15 7z"/></svg>
+                <span>VS Code</span>
+              </div>
+              <div class="tech-icon-card glass-card tilt-card" data-tech-name="Node.js">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span>Node.js</span>
+              </div>
+              <div class="tech-icon-card glass-card tilt-card" data-tech-name="Express.js">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M9 9h6v6H9z"/></svg>
+                <span>Express.js</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Live Preview Section -->
+          <div class="codealpha-preview-container">
+            <h3 class="subsection-title split-text text-center">Interactive Task Console</h3>
+            <p class="section-subtitle text-center">Auto-cycling through completed internship modules.</p>
+
+            <div class="codealpha-live-browser glass-card" id="codealpha-live-browser">
+              <!-- Browser Header -->
+              <div class="browser-header">
+                <div class="browser-dots">
+                  <span class="dot-red"></span>
+                  <span class="dot-yellow"></span>
+                  <span class="dot-green"></span>
+                </div>
+                <div class="browser-address" id="browser-url-display">bharanivs17-netizen.github.io/codealpha_task/task-1</div>
+              </div>
+
+              <!-- Animated Loading Bar -->
+              <div class="browser-loading-bar-container">
+                <div class="browser-loading-bar-fill" id="browser-loading-bar-fill"></div>
+              </div>
+
+              <!-- Browser Display Frame -->
+              <div class="browser-frame-body" id="browser-frame-body">
+                <!-- Task 1 Content -->
+                <div class="task-preview-panel active" data-task="1">
+                  <div class="panel-layout">
+                    <div class="panel-visual bg-gradient-1">
+                      <span class="visual-badge">E-Commerce Website</span>
+                      <div class="mock-ui-product">
+                        <div class="mock-product-card glass-card">
+                          <div class="product-thumb"></div>
+                          <h5>Modern Laptop Pro</h5>
+                          <span class="product-price">$1,299.00</span>
+                          <button class="mock-btn">Add to Cart</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel-text">
+                      <h4>Task 1: E-Commerce Product Catalog</h4>
+                      <p>Built a responsive product showcase utilizing structured layouts. Integrates grid sorting, tag filtering, responsive drawer carts, and dynamic price calculations.</p>
+                      <div class="task-details-list">
+                        <span>✦ Responsive Product Grid</span>
+                        <span>✦ Simulated Cart Drawer</span>
+                        <span>✦ Smooth Filter Animations</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Task 2 Content -->
+                <div class="task-preview-panel" data-task="2">
+                  <div class="panel-layout">
+                    <div class="panel-visual bg-gradient-2">
+                      <span class="visual-badge">Social Media Platform</span>
+                      <div class="mock-ui-social">
+                        <div class="mock-social-post glass-card">
+                          <div class="post-header">
+                            <div class="post-avatar"></div>
+                            <div class="post-name">Bharani V.S</div>
+                          </div>
+                          <p class="post-desc">Just deployed the CodeAlpha tasks live on GitHub! 🚀 Check them out.</p>
+                          <div class="post-actions">
+                            <span>❤️ 42 Likes</span>
+                            <span>💬 8 Comments</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel-text">
+                      <h4>Task 2: Social Media Feed Interface</h4>
+                      <p>Developed an interactive social platform dashboard. Features a responsive timeline feed, custom profile card widget, dynamic text inputs for posts, and instant feed updates.</p>
+                      <div class="task-details-list">
+                        <span>✦ Dynamic Post Creation</span>
+                        <span>✦ Custom Interactive Reactions</span>
+                        <span>✦ Grid Profile Dashboard Layout</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Task 3 Content -->
+                <div class="task-preview-panel" data-task="3">
+                  <div class="panel-layout">
+                    <div class="panel-visual bg-gradient-3">
+                      <span class="visual-badge">Analytics Dashboard</span>
+                      <div class="mock-ui-dashboard">
+                        <div class="mock-db-chart glass-card">
+                          <h5>Conversion Metrics</h5>
+                          <div class="mock-bars">
+                            <div class="bar" style="height: 60%;"></div>
+                            <div class="bar" style="height: 80%;"></div>
+                            <div class="bar" style="height: 45%;"></div>
+                            <div class="bar" style="height: 95%;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel-text">
+                      <h4>Task 3: Client Dashboard Panel</h4>
+                      <p>Engineered an analytical user control panel. Visualizes complex statistics, dynamic widgets, active system processes, and custom chart layouts.</p>
+                      <div class="task-details-list">
+                        <span>✦ volumentric Bar Chart HUDs</span>
+                        <span>✦ Real-time Metric Widgets</span>
+                        <span>✦ Clean Navigation Layouts</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons for Preview -->
+            <div class="codealpha-preview-links">
+              <a href="https://bharanivs17-netizen.github.io/codealpha_task/" target="_blank" rel="noopener noreferrer" class="btn-connect-gravity primary magnetic" data-tooltip="Open Live Demo">
+                <span class="btn-connect-text">🌐 Live Demo</span>
+                <span class="btn-connect-icon">↗</span>
+              </a>
+              <a href="https://github.com/bharanivs17-netizen/codealpha_task" target="_blank" class="btn-connect-gravity secondary magnetic" data-tooltip="GitHub Repository">
+                <span class="btn-connect-text">💻 GitHub Repository</span>
+                <span class="btn-connect-icon">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Animated Timeline -->
+          <div class="codealpha-timeline-container">
+            <h3 class="subsection-title split-text text-center">Internship Roadmap</h3>
+            <div class="codealpha-timeline-wrapper">
+              <div class="timeline-v-line"></div>
+              
+              <!-- Timeline node 1 -->
+              <div class="timeline-gravity-node">
+                <div class="node-dot"></div>
+                <div class="node-content glass-card">
+                  <h5>Joined Internship</h5>
+                  <p>Onboarded as a Full Stack Web Development Intern.</p>
+                </div>
+              </div>
+
+              <!-- Timeline node 2 -->
+              <div class="timeline-gravity-node">
+                <div class="node-dot"></div>
+                <div class="node-content glass-card">
+                  <h5>Completed Task 1</h5>
+                  <p>Successfully designed and deployed the Product Catalog interface.</p>
+                </div>
+              </div>
+
+              <!-- Timeline node 3 -->
+              <div class="timeline-gravity-node">
+                <div class="node-dot"></div>
+                <div class="node-content glass-card">
+                  <h5>Completed Task 2</h5>
+                  <p>Completed feed inputs and dynamic profile components for Task 2.</p>
+                </div>
+              </div>
+
+              <!-- Timeline node 4 -->
+              <div class="timeline-gravity-node">
+                <div class="node-dot"></div>
+                <div class="node-content glass-card">
+                  <h5>Completed Task 3</h5>
+                  <p>Finished the modular analytics panel dashboard visualization.</p>
+                </div>
+              </div>
+
+              <!-- Timeline node 5 -->
+              <div class="timeline-gravity-node">
+                <div class="node-dot"></div>
+                <div class="node-content glass-card">
+                  <h5>Project Deployment</h5>
+                  <p>Consolidated all modules and hosted live previews on GitHub Pages.</p>
+                </div>
+              </div>
+
+              <!-- Timeline node 6 -->
+              <div class="timeline-gravity-node">
+                <div class="node-dot"></div>
+                <div class="node-content glass-card">
+                  <h5>Internship Completed</h5>
+                  <p>Earned certification in Full Stack Development skills.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Achievements Grid -->
+          <div class="codealpha-achievements-container">
+            <h3 class="subsection-title split-text text-center">Skills Validated</h3>
+            <div class="codealpha-achievements-grid">
+              <div class="achievement-card glass-card">
+                <h5>Responsive Design</h5>
+                <p>Layout optimization across diverse device aspect ratios.</p>
+              </div>
+              <div class="achievement-card glass-card">
+                <h5>Modern UI</h5>
+                <p>Implementing glassmorphic, micro-animated aesthetics.</p>
+              </div>
+              <div class="achievement-card glass-card">
+                <h5>Frontend Development</h5>
+                <p>Building high-performance DOM manipulation modules.</p>
+              </div>
+              <div class="achievement-card glass-card">
+                <h5>Backend Integration</h5>
+                <p>Validating endpoint ingestion and payload bindings.</p>
+              </div>
+              <div class="achievement-card glass-card">
+                <h5>Performance Tuning</h5>
+                <p>Enforcing smooth rendering at lockstep 60 FPS.</p>
+              </div>
+              <div class="achievement-card glass-card">
+                <h5>Clean Architecture</h5>
+                <p>Structuring modular, readable stylesheet and script blocks.</p>
+              </div>
+              <div class="achievement-card glass-card">
+                <h5>Interactive UX</h5>
+                <p>Constructing magnetic links and custom tooltips.</p>
+              </div>
+              <div class="achievement-card glass-card">
+                <h5>Deployment Ready</h5>
+                <p>Managing public releases, pipelines, and hosted runtimes.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Final Call to Action -->
+          <div class="codealpha-cta-container glass-card tilt-card">
+            <h2>Interested in seeing more projects?</h2>
+            <div class="codealpha-cta-buttons">
+              <a href="#projects" class="btn-connect-gravity primary magnetic">
+                <span class="btn-connect-text">Explore Portfolio</span>
+                <span class="btn-connect-icon">&rarr;</span>
+              </a>
+              <a href="#contact" class="btn-connect-gravity secondary magnetic">
+                <span class="btn-connect-text">Contact Me</span>
+                <span class="btn-connect-icon">✉</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- STATS & HACKATHONS -->
+      <section id="stats" class="section">
+        <div class="container">
+          <div class="stats-grid">
+            <div class="stat-item glass-card tilt-card">
+              <div class="stat-number" data-target="15">0</div>
+              <div class="stat-label">Hackathons</div>
+            </div>
+            <div class="stat-item glass-card tilt-card">
+              <div class="stat-number" data-target="40">0</div>
+              <div class="stat-label">Events</div>
+            </div>
+            <div class="stat-item glass-card tilt-card">
+              <div class="stat-number" data-target="30">0</div>
+              <div class="stat-label">Projects</div>
+            </div>
+            <div class="stat-item glass-card tilt-card">
+              <div class="stat-number" data-target="50">0</div>
+              <div class="stat-label">Certificates</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LICENSES & CERTIFICATIONS -->
+      <section id="certificates" class="section">
+        <div class="container">
+          <h2 class="section-title split-text text-center">Licenses & Certifications</h2>
+          <p class="section-subtitle split-text text-center">Verified credentials validating technical capabilities and architectural knowledge.</p>
+          
+          <div class="certifications-list">
+            <!-- Cert 1 -->
+            <div class="cert-item-linkedin glass-card">
+              <div class="cert-logo-wrapper">
+                <svg class="issuer-logo" viewBox="0 0 48 48" fill="none">
+                  <rect width="48" height="48" rx="8" fill="#FF9900"/>
+                  <path d="M14 28c4-4 12-4 16 0M32 20v10M16 20h8" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="cert-details">
+                <h3>AWS Certified Solutions Architect — Associate</h3>
+                <span class="cert-issuer">Amazon Web Services (AWS)</span>
+                <span class="cert-date">Issued Jan 2026 · No Expiration Date</span>
+                <span class="cert-id">Credential ID: AWS-ASA-9948210</span>
+                <div class="cert-skills">
+                  <strong>Skills:</strong> <span>Cloud Architecture</span> · <span>Amazon S3</span> · <span>AWS Lambda</span> · <span>Amazon EC2</span>
+                </div>
+                <a href="#" class="btn-cert magnetic">Show credential ↗</a>
+              </div>
+            </div>
+
+            <!-- Cert 2 -->
+            <div class="cert-item-linkedin glass-card">
+              <div class="cert-logo-wrapper">
+                <svg class="issuer-logo" viewBox="0 0 48 48" fill="none">
+                  <rect width="48" height="48" rx="8" fill="#0064E0"/>
+                  <path d="M12 24c0-5 4-9 9-9h6c5 0 9 4 9 9s-4 9-9 9h-6c-5 0-9-4-9-9z" stroke="#FFFFFF" stroke-width="3"/>
+                </svg>
+              </div>
+              <div class="cert-details">
+                <h3>Meta Front-End Developer Professional</h3>
+                <span class="cert-issuer">Meta</span>
+                <span class="cert-date">Issued Nov 2025 · No Expiration Date</span>
+                <span class="cert-id">Credential ID: META-FE-5540321</span>
+                <div class="cert-skills">
+                  <strong>Skills:</strong> <span>React.js</span> · <span>UX Design</span> · <span>CSS Grid & Layouts</span> · <span>State Management</span>
+                </div>
+                <a href="#" class="btn-cert magnetic">Show credential ↗</a>
+              </div>
+            </div>
+
+            <!-- Cert 3 -->
+            <div class="cert-item-linkedin glass-card">
+              <div class="cert-logo-wrapper">
+                <svg class="issuer-logo" viewBox="0 0 48 48" fill="none">
+                  <rect width="48" height="48" rx="8" fill="#3776AB"/>
+                  <path d="M24 10v28M14 24h20" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="cert-details">
+                <h3>Advanced Python & Data Algorithms</h3>
+                <span class="cert-issuer">Python Software Foundation (PSF)</span>
+                <span class="cert-date">Issued Sep 2025 · No Expiration Date</span>
+                <span class="cert-id">Credential ID: PSF-PY-2294801</span>
+                <div class="cert-skills">
+                  <strong>Skills:</strong> <span>Algorithm Design</span> · <span>Data Structures</span> · <span>Object-Oriented Python</span>
+                </div>
+                <a href="#" class="btn-cert magnetic">Show credential ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BEYOND CODE (Entrepreneurship) -->
+      <section id="beyond-code" class="section">
+        <div class="blueprint-bg"></div>
+        <div class="container">
+          <h2 class="section-title split-text">Beyond Code</h2>
+          <p class="vision-text split-text">"I don't just build websites.<br>I build digital businesses."</p>
+          
+          <div class="vision-timeline">
+            <div class="vision-step">Freelancer</div>
+            <div class="vision-arrow">→</div>
+            <div class="vision-step">Agency</div>
+            <div class="vision-arrow">→</div>
+            <div class="vision-step highlight-step">VSNEXAR</div>
+            <div class="vision-arrow">→</div>
+            <div class="vision-step">Global Studio</div>
+            <div class="vision-arrow">→</div>
+            <div class="vision-step">AI Company</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIFE PHILOSOPHY -->
+      <section id="philosophy" class="section">
+        <div class="container text-center">
+          <blockquote class="large-quote split-quote">
+            "A small boy can do anything if he believes in learning every day."
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section id="testimonials" class="section">
+        <div class="container overflow-hidden">
+           <h2 class="section-title split-text text-center">Client Voices</h2>
+           <div class="testimonial-slider">
+             <div class="testimonial-card glass-card tilt-card">
+                <p class="t-text">"V. S. Bharani completely transformed our digital presence. Absolute top-tier quality."</p>
+                <p class="t-author">— Sarah J., Founder</p>
+             </div>
+             <div class="testimonial-card glass-card tilt-card">
+                <p class="t-text">"The attention to detail and motion design is unmatched. Highly recommended."</p>
+                <p class="t-author">— Mark D., Tech Lead</p>
+             </div>
+           </div>
+        </div>
+      </section>
+
+      <!-- RECRUITER COMMAND CENTER -->
+      <section id="recruiter-hub" class="section">
+        <div class="container">
+          <h2 class="section-title split-text text-center">Recruiter Hub</h2>
+          <p class="section-subtitle split-text text-center">Quick actions designed to streamline your evaluation workflow.</p>
+          
+          <div class="recruiter-grid">
+            <!-- Quick Actions Panel -->
+            <div class="recruiter-card glass-card tilt-card">
+              <h3>Direct Pipeline</h3>
+              <p>Everything you need to initiate conversations or evaluate credentials instantly.</p>
+              <div class="action-buttons-grid">
+                <!-- Email Me Button -->
+                <a href="mailto:bharaniabcd17@gmail.com" class="btn-recruiter-contact primary magnetic" id="copy-email-btn">
+                  <span class="btn-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  </span>
+                  <span class="btn-text">Email Me</span>
+                </a>
+
+                <!-- LinkedIn Button -->
+                <a href="https://www.linkedin.com/in/bharani-v-s-76b735362?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="btn-recruiter-contact secondary magnetic">
+                  <span class="btn-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  </span>
+                  <span class="btn-text">LinkedIn</span>
+                </a>
+
+                <!-- Mobile Button -->
+                <a href="tel:6369324916" class="btn-recruiter-contact secondary magnetic">
+                  <span class="btn-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  </span>
+                  <span class="btn-text">Call / SMS</span>
+                </a>
+
+                <!-- Instagram Button -->
+                <a href="https://www.instagram.com/vsnexar_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="btn-recruiter-contact secondary magnetic" style="grid-column: span 2;">
+                  <span class="btn-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  </span>
+                  <span class="btn-text">Instagram</span>
+                </a>
+              </div>
+              <div class="availability-status">
+                <span class="status-dot"></span>
+                <span>Active Status: Open to Startup Roles & AI Projects</span>
+              </div>
+            </div>
+
+            <!-- Skill Filter Console -->
+            <div class="recruiter-card glass-card tilt-card">
+              <h3>Interactive Tech Finder</h3>
+              <p>Click a tag to highlight matching projects above.</p>
+              <div class="interactive-tags" id="recruiter-tags">
+                <span class="tech-tag" data-tech="React">React</span>
+                <span class="tech-tag" data-tech="Three.js">Three.js</span>
+                <span class="tech-tag" data-tech="Python">Python</span>
+                <span class="tech-tag" data-tech="Node.js">Node.js</span>
+                <span class="tech-tag" data-tech="MongoDB">MongoDB</span>
+                <span class="tech-tag" data-tech="Docker">Docker</span>
+              </div>
+              <button class="btn text-link reset-btn" id="reset-filter-btn" style="margin-top: 1rem; display: none;">Clear Filter</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LET'S CONNECT SECTION -->
+      <section id="contact" class="section connect-section">
+        <!-- Anti-Gravity Ambient Environment -->
+        <div class="connect-bg">
+          <div class="connect-aurora"></div>
+          <div class="connect-orbs" id="connect-orbs-container"></div>
+          <div class="connect-particles" id="connect-particles-container"></div>
+        </div>
+
+        <div class="container">
+          <h2 class="section-title text-center split-text">Let's Connect</h2>
+          <p class="section-subtitle text-center split-text">Have an opportunity, project, or collaboration? Reach me instantly through any platform below.</p>
+          
+          <div class="connect-grid" id="connect-grid">
+            <!-- 1. LinkedIn Card -->
+            <div class="connect-card-gravity glass-card" data-connect-id="linkedin">
+              <div class="connect-card-border-glow"></div>
+              <div class="connect-spotlight"></div>
+              <div class="connect-card-content">
+                <div class="connect-icon-wrapper">
+                  <svg class="connect-brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                    <rect x="2" y="9" width="4" height="12"/>
+                    <circle cx="4" cy="4" r="2"/>
+                  </svg>
+                </div>
+                <h3>LinkedIn</h3>
+                <p>Connect professionally and explore my experience.</p>
+                <a href="https://www.linkedin.com/in/bharani-v-s-76b735362?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="btn-connect-gravity magnetic" data-tooltip="Open LinkedIn">
+                  <span class="btn-connect-text">View LinkedIn</span>
+                  <span class="btn-connect-icon">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- 2. Instagram Card -->
+            <div class="connect-card-gravity glass-card" data-connect-id="instagram">
+              <div class="connect-card-border-glow"></div>
+              <div class="connect-spotlight"></div>
+              <div class="connect-card-content">
+                <div class="connect-icon-wrapper">
+                  <svg class="connect-brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                  </svg>
+                </div>
+                <h3>Instagram</h3>
+                <p>Follow my creative journey and latest work.</p>
+                <a href="https://www.instagram.com/vsnexar_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="btn-connect-gravity magnetic" data-tooltip="Visit Instagram">
+                  <span class="btn-connect-text">Visit Instagram</span>
+                  <span class="btn-connect-icon">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- 3. Email Card -->
+            <div class="connect-card-gravity glass-card" data-connect-id="email">
+              <div class="connect-card-border-glow"></div>
+              <div class="connect-spotlight"></div>
+              <div class="connect-card-content">
+                <div class="connect-icon-wrapper">
+                  <svg class="connect-brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                </div>
+                <h3>Email</h3>
+                <div class="copy-field-wrapper">
+                  <span class="copy-value" id="email-value">bharaniabcd17@gmail.com</span>
+                  <button class="btn-copy-action" id="copy-email-action-btn" data-tooltip="Copy Email" aria-label="Copy email to clipboard">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                  </button>
+                </div>
+                <p>Drop a line directly into my inbox.</p>
+                <a href="mailto:bharaniabcd17@gmail.com" class="btn-connect-gravity magnetic" data-tooltip="Send Email">
+                  <span class="btn-connect-text">Send Email</span>
+                  <span class="btn-connect-icon">✉</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- 4. Contact Number Card -->
+            <div class="connect-card-gravity glass-card" data-connect-id="phone">
+              <div class="connect-card-border-glow"></div>
+              <div class="connect-spotlight"></div>
+              <div class="connect-card-content">
+                <div class="connect-icon-wrapper">
+                  <svg class="connect-brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </div>
+                <h3>Contact</h3>
+                <div class="copy-field-wrapper">
+                  <span class="copy-value" id="phone-value">+91 63693 24916</span>
+                  <button class="btn-copy-action" id="copy-phone-action-btn" data-tooltip="Copy Phone Number" aria-label="Copy phone number to clipboard">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                  </button>
+                </div>
+                <p>Reach me directly on my personal cellular network.</p>
+                <a href="tel:6369324916" class="btn-connect-gravity magnetic" data-tooltip="Call Now">
+                  <span class="btn-connect-text">Call Now</span>
+                  <span class="btn-connect-icon">📞</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHATSAPP FLOATING BUTTON -->
+      <a href="https://wa.me/916369324916?text=Hello%20Bharani%2C%20I'd%20like%20to%20discuss%20a%20project." target="_blank" class="whatsapp-floating-btn magnetic" data-tooltip="WhatsApp Message" aria-label="Chat with Bharani on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      <!-- GLOBAL TOOLTIP BOX -->
+      <div id="connect-tooltip" class="connect-tooltip-el"></div>
+
+      <!-- TOAST NOTIFICATION CONTAINER -->
+      <div id="connect-toast-container"></div>
+
+      <!-- FOOTER -->
+      <footer id="footer">
+        <div class="container footer-content">
+          <div class="footer-logo">VSNEXAR.</div>
+          <div class="social-links">
+            <a href="https://github.com/bharanivs17-netizen" target="_blank" class="magnetic">GitHub</a>
+            <a href="https://www.linkedin.com/in/bharani-v-s-76b735362?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="magnetic">LinkedIn</a>
+            <a href="https://www.instagram.com/vsnexar_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="magnetic">Instagram</a>
+          </div>
+          <p class="footer-quote">Designed & Crafted with passion.</p>
+          <div class="footer-bottom">
+            <span>&copy; <span id="year">2026</span> V. S. Bharani</span>
+            <a href="#hero" class="back-to-top magnetic">Back to Top ↑</a>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- PROJECT FULLSCREEN MODAL (Hidden by default, used for FLIP animation) -->
+  <div id="project-modal" class="modal">
+    <div class="modal-close magnetic">✕</div>
+    <div class="modal-content-scroll">
+      <div class="modal-hero">
+        <div class="modal-image" id="modal-image"></div>
+      </div>
+      <div class="modal-body container">
+        <h2 id="modal-title">Project Title</h2>
+        <div class="modal-case-study">
+          <div class="case-section">
+            <h3>Problem</h3>
+            <p id="modal-problem">Identifying the core issue.</p>
+          </div>
+          <div class="case-section">
+            <h3>Solution</h3>
+            <p id="modal-solution">Crafting the elegant resolution.</p>
+          </div>
+          <div class="case-section">
+            <h3>Tech Stack</h3>
+            <div class="modal-tags" id="modal-tags"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="intro.js"></script>
+  <script src="connect.js"></script>
+  <script src="codealpha.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+/* APPLE-STYLE BLACK PRELOADER */
+#black-preloader {
+  position: fixed;
+  inset: 0;
+  background: #000000;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #FFFFFF;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 1.2s;
+}
+
+#black-preloader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(20px);
+}
+
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.preloader-logo-apple {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  opacity: 0.9;
+}
+
+.preloader-bar-container {
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.preloader-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: #FFFFFF;
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+.preloader-percentage {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}
+
+/* INTRO CANVAS SECTION */
+#intro-canvas-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #000000; /* Black background for cinematic feel */
+  overflow: hidden;
+  z-index: 50; /* Above normal content, below nav if nav was visible */
+}
+
+#intro-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* High DPI optimization */
+  image-rendering: -webkit-optimize-contrast;
+  transform: translateZ(0); /* Hardware acceleration */
+}
+
+/* CINEMATIC TRANSITION STYLES */
+.canvas-bloom {
+  filter: brightness(1.2) drop-shadow(0 0 20px rgba(255,255,255,0.5));
+  transition: filter 1s ease-in-out;
+}
+
+/* Initial Hidden States for the Website */
+.hero-hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  pointer-events: none;
+}
+.nav-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -150%);
+}
