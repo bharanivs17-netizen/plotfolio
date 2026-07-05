@@ -44,45 +44,39 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Dynamic Preloader Logic
-  const extensions = ['jpg', 'jpeg', 'png'];
+  const TOTAL_FRAMES = 30;
   
   const loadFrames = async () => {
-    let index = 1;
-    let hasFailed = false;
+    const promises = [];
     
-    while (!hasFailed) {
-      const paddedIndex = String(index).padStart(3, '0'); // ezgif-frame-001
-      let imgLoaded = false;
+    for (let index = 1; index <= TOTAL_FRAMES; index++) {
+      const paddedIndex = String(index).padStart(4, '0'); // frame-0001
+      const img = new Image();
+      const src = `image%20frame/frame-${paddedIndex}.webp`;
       
-      for (const ext of extensions) {
-        if (imgLoaded) break;
-        
-        const img = new Image();
-        const src = `image%20frame/ezgif-frame-${paddedIndex}.${ext}`;
-        
-        await new Promise((resolve) => {
-          img.onload = () => {
-            frames.push(img);
-            imgLoaded = true;
-            
-            // Visual Progress (Estimated total around 30-40 based on directory)
-            // Just capping at 99% until fully done.
-            const progress = Math.min((frames.length / 30) * 100, 99);
-            if(preloaderBar) preloaderBar.style.width = `${progress}%`;
-            if(preloaderText) preloaderText.innerText = `${Math.floor(progress)}%`;
-            resolve();
-          };
-          img.onerror = () => {
-            resolve();
-          };
-          img.src = src;
-        });
-      }
-      
-      if (imgLoaded) {
-        index++;
-      } else {
-        hasFailed = true; // Failed all extensions, stop loop.
+      const promise = new Promise((resolve) => {
+        img.onload = () => {
+          frames[index - 1] = img;
+          const loadedCount = frames.filter(Boolean).length;
+          const progress = Math.min((loadedCount / TOTAL_FRAMES) * 100, 99);
+          if(preloaderBar) preloaderBar.style.width = `${progress}%`;
+          if(preloaderText) preloaderText.innerText = `${Math.floor(progress)}%`;
+          resolve();
+        };
+        img.onerror = () => {
+          resolve();
+        };
+        img.src = src;
+      });
+      promises.push(promise);
+    }
+    
+    await Promise.all(promises);
+    
+    // Clean up empty slots if any frame failed to load (to prevent undefined images in animation)
+    for (let i = frames.length - 1; i >= 0; i--) {
+      if (!frames[i]) {
+        frames.splice(i, 1);
       }
     }
     
@@ -113,6 +107,10 @@ document.addEventListener("DOMContentLoaded", () => {
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
       ctx.scale(dpr, dpr);
+      
+      // Ensure high quality image rendering for 4K frames
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
     };
     
     setupCanvas();
