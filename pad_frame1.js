@@ -2,8 +2,8 @@ const sharp = require('sharp');
 const path = require('path');
 
 async function padFrame1() {
-  const inputPath = 'd:\\plotfolio\\image frame\\ezgif-frame-001.jpg';
-  const outputPath = 'd:\\plotfolio\\image frame\\frame-0001-padded.png';
+  const inputPath = 'd:\\plotfolio\\image_frame\\ezgif-frame-001.jpg';
+  const outputPath = 'd:\\plotfolio\\image_frame\\frame-0001-padded.png';
 
   try {
     const meta = await sharp(inputPath).metadata();

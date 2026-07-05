@@ -1,6 +1,6 @@
 node_modules/
 realesrgan/
 realesrgan_full/
-image frame/*.png
-image frame/*-test.webp
-image frame/test_*.png
+image_frame/*.png
+image_frame/*-test.webp
+image_frame/test_*.png

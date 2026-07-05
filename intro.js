@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let index = 1; index <= TOTAL_FRAMES; index++) {
       const paddedIndex = String(index).padStart(4, '0'); // frame-0001
       const img = new Image();
-      const src = `image%20frame/frame-${paddedIndex}.webp`;
+      const src = `image_frame/frame-${paddedIndex}.webp`;
       
       const promise = new Promise((resolve) => {
         img.onload = () => {
